@@ -66,9 +66,9 @@ def delete_entry_item():
     if not selected_item:
         messagebox.showerror('Error', 'Choose an item to delete')
     else:
-        # Get the values from the selected item in the Treeview, including the ID
+   
         selected_values = tree.item(selected_item, 'values')
-        selected_id = selected_values[0]  # Assuming ID is the first column
+        selected_id = selected_values[0] 
         Productdb_if.delete_product(selected_id)
         add_to_treeview()
         clear_form()
@@ -79,9 +79,9 @@ def update_entry_item():
     if not selected_item:
         messagebox.showerror('Error', 'Choose an item to update')
     else:
-        # Get the values from the selected item in the Treeview, including the ID
+
         selected_values = tree.item(selected_item, 'values')
-        selected_id = selected_values[0]  # Assuming ID is the first column
+        selected_id = selected_values[0]
         product = productcombox.get()
         box = quantitycombox.get()
         price = price_entry.get()
@@ -112,12 +112,10 @@ def import_from_csv():
     file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
 
     if file_path:
-        # Clear existing data in Treeview
         tree.delete(*tree.get_children())
-
         with open(file_path, 'r') as csv_file:
             csv_reader = csv.reader(csv_file)
-            header = next(csv_reader)  # Read the header row
+            header = next(csv_reader) 
 
             for row in csv_reader:
                 tree.insert('', 'end', values=row)
